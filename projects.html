@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - Raj Koyani</title>
+
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg:#fdfdfd;
+      --ink:#333;
+      --muted:#6b7280;
+      --brand:#6366f1; /* indigo */
+      --brand2:#06b6d4; /* cyan */
+    }
+
+    /* Light pastel background with animated orbs */
+    html,body{height:100%}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 600px at 15% -10%, rgba(99,102,241,.10), transparent 60%),
+        radial-gradient(800px 500px at 85% 0%, rgba(6,182,212,.12), transparent 55%),
+        linear-gradient(#fdfdfd,#fafafa);
+      overflow-x:hidden;
+    }
+
+    /* Animated pastel orb background */
+    .bg-orbs{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+    .bg-orbs .orb{
+      position:absolute; border-radius:9999px; filter:blur(40px);
+      opacity:.45; transform:translate3d(0,0,0); will-change:transform;
+      animation:float 16s ease-in-out infinite;
+      mix-blend-mode:multiply;
+    }
+    .bg-orbs .orb:nth-child(1){
+      width:380px; height:380px; left:-80px; top:-60px;
+      background:radial-gradient(circle at 30% 30%, #c7d2fe, #e0e7ff 60%, transparent 70%);
+      animation-duration:18s;
+    }
+    .bg-orbs .orb:nth-child(2){
+      width:320px; height:320px; right:-90px; top:30%;
+      background:radial-gradient(circle at 60% 40%, #bae6fd, #e0f2fe 60%, transparent 70%);
+      animation-duration:22s; animation-delay:-3s;
+    }
+    .bg-orbs .orb:nth-child(3){
+      width:260px; height:260px; left:12%; bottom:-100px;
+      background:radial-gradient(circle at 40% 60%, #fbcfe8, #ffe4e6 60%, transparent 70%);
+      animation-duration:20s; animation-delay:-6s;
+    }
+
+    @keyframes float{
+      0%,100%{ transform:translate3d(0,0,0) scale(1) }
+      50%    { transform:translate3d(12px,-18px,0) scale(1.06) }
+    }
+
+    /* Gradient text */
+    .gradient-text{
+      background:linear-gradient(90deg,var(--brand),#22d3ee,#a78bfa,var(--brand2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      background-size:300% 100%;
+      animation:shift 10s linear infinite;
+    }
+    @keyframes shift{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+    /* Glass card style */
+    .glass{
+      background:rgba(255,255,255,.72);
+      backdrop-filter:blur(12px);
+      border-radius:1.25rem;
+      border:1px solid rgba(99,102,241,.15);
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+      transition:transform .3s ease, box-shadow .3s ease;
+    }
+    .glass:hover{ transform:translateY(-6px); box-shadow:0 12px 22px rgba(0,0,0,.08); }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:.4rem;
+      padding:.25rem .55rem; border-radius:9999px;
+      font-size:.75rem; font-weight:600;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      color:white;
+    }
+
+    .chip{
+      display:inline-block; padding:.2rem .55rem;
+      border-radius:9999px; font-size:.72rem; color:#0f172a;
+      background:#eef2ff; border:1px solid #c7d2fe;
+    }
+
+    .link-underline{position:relative}
+    .link-underline:after{
+      content:""; position:absolute; left:0; right:100%; bottom:-3px; height:2px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      transition:right .3s ease;
+    }
+    .link-underline:hover:after{right:0}
+
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    @media (prefers-reduced-motion:reduce){
+      .bg-orbs .orb{animation:none}
+      .gradient-text{animation:none}
+      .reveal{transition:none}
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-indigo-200 selection:text-indigo-900">
+  <!-- Background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb"></span>
+    <span class="orb"></span>
+    <span class="orb"></span>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-6">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-indigo-400"></div>
+        <h1 class="text-lg font-semibold">Raj Koyani</h1>
+        <span class="hidden sm:block text-sm text-[color:var(--muted)]">M.Tech Software Engineering Student</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-[color:var(--muted)]">
+        <a href="./index.html" class="link-underline hover:text-indigo-600">Home</a>
+        <a href="./Experince.html" class="link-underline hover:text-indigo-600">Experience</a>
+        <a href="./Projects.html" class="link-underline hover:text-indigo-600 font-semibold text-indigo-700">Projects</a>
+        <a href="./certificates.html" class="link-underline hover:text-indigo-600">Certification</a>
+        <a href="./resume.pdf" download class="link-underline hover:text-indigo-600">Resume</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raj.koyani23@gmail.com" target="_blank" class="link-underline hover:text-indigo-700">Mail</a>
+      </nav>
+    </header>
+
+    <!-- Title -->
+    <section class="mt-6 mb-8 text-center">
+      <h2 class="text-4xl sm:text-5xl font-extrabold gradient-text">Projects</h2>
+      <p class="mt-3 text-sm sm:text-base text-[color:var(--muted)]">
+        A selection of AI/ML, IoT, and full-stack work.
+      </p>
+    </section>
+
+    
+
+    <!-- Projects Grid -->
+    <section class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+      <!-- Image Quilting and Texture Synthesis -->
+      <article class="glass p-5 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Image Quilting and Texture Synthesis</h3>
+          <span class="badge"><i class="fa-solid fa-paintbrush"></i> Digital Image Processing</span>
+        </div>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">
+          Developed a method to synthesize new images by stitching together small patches of existing images for texture synthesis and transfer.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">Image Processing</span><span class="chip">Computer Vision</span><span class="chip">Image Synthesis</span>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-sm">
+          <a class="link-underline hover:text-indigo-600" href="uploaded:Final Report.pdf" target="_blank" rel="noopener">
+            <i class="fa-solid fa-file-pdf"></i> View Report
+          </a>
+        </div>
+      </article>
+
+      <!-- ComAlert Glove -->
+      <article class="glass p-5 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">ComAlert — Automated Glove</h3>
+          <span class="badge"><i class="fa-solid fa-certificate"></i> Patent</span>
+        </div>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">
+          Wearable glove for coma-patient monitoring with microcontrollers, sensors, and real-time alerts to caregivers.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">Embedded</span><span class="chip">Sensors</span><span class="chip">Mobile App</span>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-sm">
+          <a class="link-underline hover:text-indigo-600" href="https://github.com/Raj-Koyani" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> Repo
+          </a>
+        </div>
+      </article>
+
+      <!-- Smart Lock System (IoT Level-5) -->
+      <article class="glass p-5 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">IoT Smart Lock w/ Emergency Auto-Unlock</h3>
+          <span class="badge"><i class="fa-solid fa-microchip"></i> IoT</span>
+        </div>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">
+          Firebase-connected Android app + Arduino-controlled solenoid lock. Auto-unlocks on smoke/heat/pressure anomalies; real-time alerts.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">Android</span><span class="chip">Firebase</span><span class="chip">Arduino</span>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-sm">
+          <a class="link-underline hover:text-indigo-600" href="https://github.com/Raj-Koyani/Eden-Fist.git" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> Repo
+          </a>
+        </div>
+      </article>
+
+      <!-- Eye Disease Prediction -->
+      <article class="glass p-5 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Deep Learning for Eye Disease Prediction</h3>
+          <span class="badge"><i class="fa-solid fa-brain"></i> AI/ML</span>
+        </div>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">
+          Multi-class classification (Normal, Cataract, DR, Glaucoma) using transfer learning (InceptionV3, VGG19) with interpretability.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">TensorFlow</span><span class="chip">Transfer Learning</span><span class="chip">XAI</span>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-sm">
+          <a class="link-underline hover:text-indigo-600" href="https://github.com/Raj-Koyani/eye-dieases-prediction-.git" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> Repo
+          </a>
+        </div>
+      </article>
+
+      <!-- MEDIBOT -->
+      <article class="glass p-5 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">MEDIBOT — AI Health Chatbot</h3>
+          <span class="badge"><i class="fa-solid fa-comment-medical"></i> GenAI</span>
+        </div>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">
+          Generative AI companion for reminders, symptom analysis, and preliminary triage; intent-based NLP backend.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">Python</span><span class="chip">NLP</span><span class="chip">REST API</span>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-sm">
+          <a class="link-underline hover:text-indigo-600" href="https://github.com/yourusername/medibot" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> Repo
+          </a>
+        </div>
+      </article>
+
+      <!-- Gym Country -->
+      <article class="glass p-5 reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-bold">Gym Country — Web App</h3>
+          <span class="badge"><i class="fa-solid fa-dumbbell"></i> Web</span>
+        </div>
+        <p class="mt-2 text-sm text-[color:var(--muted)]">
+          Web-based gym management (HTML/CSS/JS + PHP) with secure routines management and backend persistence.
+        </p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class="chip">HTML/CSS/JS</span><span class="chip">PHP</span>
+        </div>
+        <div class="mt-4 flex items-center gap-4 text-sm">
+          <a class="link-underline hover:text-indigo-600" href="https://github.com/Raj-Koyani/Gym-Country.git" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> Repo
+          </a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-14 py-6 border-t border-gray-200 text-sm text-[color:var(--muted)] flex flex-col sm:flex-row justify-between gap-6">
+      <div class="flex flex-col sm:flex-row gap-8">
+        <div>
+          <span class="font-medium text-indigo-700">Email</span><br/>
+          <a href="mailto:raj.koyani23@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Raj,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+             class="link-underline hover:text-indigo-600">
+            <i class="fa-solid fa-envelope"></i><span>raj.koyani23@gmail.com</span>
+          </a>
+        </div>
+        <div>
+          <span class="font-medium text-indigo-700">GitHub</span><br/>
+          <a href="https://github.com/Raj-Koyani" target="_blank" class="hover:underline flex items-center gap-2">
+            <i class="fa-brands fa-github"></i><span>Raj-Koyani</span>
+          </a>
+        </div>
+        <div>
+          <span class="font-medium text-indigo-700">LinkedIn</span><br/>
+          <a href="https://www.linkedin.com/in/raj-koyani-b1687a232" target="_blank" class="hover:underline flex items-center gap-2">
+            <i class="fa-brands fa-linkedin"></i><span>in/raj-koyani</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p>&copy; 2024 By Raj Koyani</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // scroll reveal
+    const observer=new IntersectionObserver((entries)=> {
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target);}
+      });
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

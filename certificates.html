@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certifications - Raj Koyani</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --ink:#2f2f32;
+      --muted:#6b7280;
+      --brand:#6366f1;  /* indigo */
+      --brand2:#06b6d4; /* cyan   */
+    }
+
+    /* Page background (light, pastel, animated orbs) */
+    html,body{height:100%}
+    body{
+      background:
+        radial-gradient(900px 600px at 15% -10%, rgba(99,102,241,.10), transparent 60%),
+        radial-gradient(800px 500px at 85% 0%,  rgba(6,182,212,.12), transparent 55%),
+        linear-gradient(#fdfdfd,#fafafa);
+      color:var(--ink);
+      overflow-x:hidden;
+      font-smooth:always;
+      -webkit-font-smoothing:antialiased;
+    }
+    .bg-orbs{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden}
+    .orb{
+      position:absolute; border-radius:9999px; filter:blur(42px); opacity:.42; mix-blend-mode:multiply;
+      animation:float 20s ease-in-out infinite; will-change:transform;
+    }
+    .orb:nth-child(1){width:360px;height:360px;left:-80px;top:-60px;background:radial-gradient(circle,#c7d2fe,#e0e7ff 60%,transparent 70%);animation-duration:22s}
+    .orb:nth-child(2){width:300px;height:300px;right:-90px;top:32%;background:radial-gradient(circle,#bae6fd,#e0f2fe 60%,transparent 70%);animation-duration:24s;animation-delay:-4s}
+    .orb:nth-child(3){width:260px;height:260px;left:12%;bottom:-90px;background:radial-gradient(circle,#fbcfe8,#ffe4e6 60%,transparent 70%);animation-duration:21s;animation-delay:-8s}
+    .orb:nth-child(4){width:220px;height:220px;right:28%;top:8%;background:radial-gradient(circle,#bbf7d0,#dcfce7 60%,transparent 70%);animation-duration:26s;animation-delay:-6s}
+    @keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(12px,-18px,0) scale(1.05)}}
+    @media (prefers-reduced-motion:reduce){.orb{animation:none}}
+
+    /* Gradient heading */
+    .gradient-text{
+      background:linear-gradient(90deg,var(--brand),#22d3ee,#a78bfa,var(--brand2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      background-size:300% 100%; animation:shift 10s linear infinite;
+    }
+    @keyframes shift{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+    /* Glass card look for slides */
+    .glass{
+      background:rgba(255,255,255,.74);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(99,102,241,.16);
+      border-radius:1.1rem;
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .glass:hover{transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,.08)}
+
+    /* Carousel base (full-width slides, swipe) */
+    .carousel-container{
+      position:relative; max-width:900px; margin:0 auto; overflow:hidden;
+    }
+    .carousel{
+      display:flex; transition:transform 550ms cubic-bezier(.22,.61,.36,1);
+      touch-action:pan-y; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+    }
+    .carousel-item{ min-width:100%; flex-shrink:0; scroll-snap-align:center; padding:4px }
+    /* give active slide a subtle scale pop */
+    .carousel-item.is-active .glass{transform:translateY(-4px) scale(1.01); box-shadow:0 16px 34px rgba(0,0,0,.10)}
+
+    .certificate-image-container{ width:100%; padding-top:56.25%; position:relative }
+    .carousel-image{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+      border-radius:12px; box-shadow:0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+      background:white;
+    }
+
+    /* Nav buttons (pastel) */
+    .carousel-button{
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:linear-gradient(180deg,#ffffffcc,#f5f5ffcc);
+      color:#4338ca; border:1px solid #e5e7eb; padding:.75rem .9rem; cursor:pointer;
+      z-index:10; user-select:none; border-radius:9999px; font-size:1.1rem;
+      box-shadow:0 6px 14px rgba(0,0,0,.08);
+      transition:transform .15s ease, box-shadow .15s ease, background .2s ease;
+    }
+    .carousel-button:hover{ transform:translateY(calc(-50% - 1px)); box-shadow:0 10px 20px rgba(0,0,0,.10) }
+    .carousel-button:active{ transform:translateY(calc(-50% + 0px)) scale(.98) }
+    .carousel-button-prev{ left: -0.25rem }
+    .carousel-button-next{ right: -0.25rem }
+
+    /* Small pill for index indicator */
+    .dots{display:flex; gap:.4rem; justify-content:center; margin-top:1rem}
+    .dot{
+      width:8px;height:8px;border-radius:9999px;background:#d1d5db;transition:all .25s ease;
+    }
+    .dot.active{ width:28px; background:linear-gradient(90deg,var(--brand),var(--brand2)) }
+
+    /* Link underline micro interaction */
+    .link-underline{position:relative}
+    .link-underline:after{
+      content:""; position:absolute; left:0; right:100%; bottom:-3px; height:2px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2)); transition:right .3s ease;
+    }
+    .link-underline:hover:after{right:0}
+  </style>
+</head>
+<body class="bg-transparent font-sans antialiased text-gray-800">
+  <!-- animated background -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb"></span><span class="orb"></span><span class="orb"></span><span class="orb"></span>
+  </div>
+
+  <div class="max-w-5xl mx-auto p-6 md:p-10">
+    <!-- Navbar -->
+    <header class="flex items-center justify-between mb-10">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-indigo-400 rounded-full"></div>
+        <h1 class="text-xl font-semibold">Raj Koyani</h1>
+      </div>
+      <nav class="space-x-6 text-sm md:text-base text-gray-600">
+        <a href="index.html" class="link-underline hover:text-indigo-700">Home</a>
+        <a href="./Experince.html" class="link-underline hover:text-indigo-600">Experience</a>
+        <a href="projects.html" class="link-underline hover:text-indigo-700">Projects</a>
+        <a href="certificates.html" class="link-underline hover:text-indigo-600 font-semibold text-indigo-700">Certification</a>
+        <a href="./resume.pdf" download class="link-underline hover:text-indigo-700">Resume</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raj.koyani23@gmail.com" target="_blank" class="link-underline hover:text-indigo-700">Mail</a>
+      </nav>
+    </header>
+
+    <!-- Section -->
+    <section id="certifications" class="py-12">
+      <div class="container mx-auto px-2 sm:px-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-8 gradient-text">My Certifications</h2>
+
+        <div class="carousel-container">
+          <div class="carousel" id="cert-carousel">
+            <!-- 1 -->
+            <div class="carousel-item is-active">
+              <div class="glass p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 text-center">AWS Solution Architect</h3>
+                <p class="text-gray-600 text-sm mb-4 text-center">
+                  Completed the AWS Solution Architect Job Simulation to gain practical experience with cloud architecture.
+                </p>
+                <div class="certificate-image-container">
+                  <img src="image/aws_certificate.png" alt="AWS Solution Architect Certificate" class="carousel-image">
+                </div>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="carousel-item">
+              <div class="glass p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 text-center">Wells Fargo Software Engineering Job Simulation</h3>
+                <p class="text-gray-600 text-sm mb-4 text-center">
+                  Completed a virtual internship to gain hands-on software engineering experience with Wells Fargo.
+                </p>
+                <div class="certificate-image-container">
+                  <img src="image/wells_fargo_certificate.png" alt="Wells Fargo Certificate" class="carousel-image">
+                </div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="carousel-item">
+              <div class="glass p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 text-center">VIT Chennai Summer Research Internship 2024</h3>
+                <p class="text-gray-600 text-sm mb-4 text-center">
+                  Completed an online summer research internship from 03.06.2024 to 12.07.2024.
+                </p>
+                <div class="certificate-image-container">
+                  <img src="image/vit_internship_certificate.png" alt="VIT Chennai Certificate" class="carousel-image">
+                </div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div class="carousel-item">
+              <div class="glass p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 text-center">Data Visualization With Power BI</h3>
+                <p class="text-gray-600 text-sm mb-4 text-center">
+                  A certificate of completion for a free online course on data visualization with Power BI.
+                </p>
+                <div class="certificate-image-container">
+                  <img src="image/great_learning_certificate.png" alt="Great Learning Certificate" class="carousel-image">
+                </div>
+              </div>
+            </div>
+            <!-- 5 -->
+            <div class="carousel-item">
+              <div class="glass p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 text-center">Infosys Agile Course</h3>
+                <p class="text-gray-600 text-sm mb-4 text-center">
+                  Gained insights into Agile methodologies and Scrum practices through this comprehensive course.
+                </p>
+                <div class="certificate-image-container">
+                  <img src="image/infosys_agile_certificate.png" alt="Infosys Agile Course Certificate" class="carousel-image">
+                </div>
+              </div>
+            </div>
+            <!-- 6 -->
+            <div class="carousel-item">
+              <div class="glass p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2 text-center">NPTEL E-business</h3>
+                <p class="text-gray-600 text-sm mb-4 text-center">
+                  A certification covering the fundamental concepts of e-business and its strategic implications.
+                </p>
+                <div class="certificate-image-container">
+                  <img src="image/nptel_ebusiness_certificate.png" alt="NPTEL E-business Certificate" class="carousel-image">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nav buttons -->
+          <button class="carousel-button carousel-button-prev" aria-label="Previous">❮</button>
+          <button class="carousel-button carousel-button-next" aria-label="Next">❯</button>
+        </div>
+
+        <!-- dots -->
+        <div class="dots" id="dots"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carousel = document.getElementById('cert-carousel');
+      const items = Array.from(document.querySelectorAll('.carousel-item'));
+      const prevButton = document.querySelector('.carousel-button-prev');
+      const nextButton = document.querySelector('.carousel-button-next');
+      const dotsWrap = document.getElementById('dots');
+
+      let currentIndex = 0;
+
+      // build dots
+      items.forEach((_, i)=>{
+        const d=document.createElement('span');
+        d.className='dot' + (i===0 ? ' active' : '');
+        d.addEventListener('click',()=>goTo(i));
+        dotsWrap.appendChild(d);
+      });
+      const dots = Array.from(dotsWrap.children);
+
+      function setPosition() {
+        carousel.style.transform = `translateX(${-currentIndex * 100}%)`;
+        items.forEach((el,i)=>el.classList.toggle('is-active', i===currentIndex));
+        dots.forEach((d,i)=>d.classList.toggle('active', i===currentIndex));
+      }
+
+      function goTo(n){
+        currentIndex = Math.max(0, Math.min(items.length-1, n));
+        setPosition();
+      }
+
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) { currentIndex--; setPosition(); }
+      });
+
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < items.length - 1) { currentIndex++; setPosition(); }
+      });
+
+      // touch/swipe
+      let startX = 0, endX = 0, threshold = 50;
+      carousel.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
+      carousel.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        if (startX - endX > threshold && currentIndex < items.length - 1) currentIndex++;
+        else if (endX - startX > threshold && currentIndex > 0) currentIndex--;
+        setPosition();
+      });
+
+      // initial state
+      setPosition();
+    });
+  </script>
+</body>
+</html>

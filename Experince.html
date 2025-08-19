@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience - Raj Koyani</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --ink:#2f2f32;
+      --muted:#6b7280;
+      --brand:#6366f1;  /* indigo */
+      --brand2:#06b6d4; /* cyan   */
+    }
+
+    /* Light pastel background with animated orbs */
+    html,body{height:100%}
+    body{
+      background:
+        radial-gradient(900px 600px at 15% -10%, rgba(99,102,241,.10), transparent 60%),
+        radial-gradient(800px 500px at 85% 0%,  rgba(6,182,212,.12), transparent 55%),
+        linear-gradient(#fdfdfd,#fafafa);
+      color:var(--ink);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .bg-orbs{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden}
+    .orb{
+      position:absolute; border-radius:9999px; filter:blur(42px); opacity:.42; mix-blend-mode:multiply;
+      animation:float 20s ease-in-out infinite; will-change:transform;
+    }
+    .orb:nth-child(1){width:360px;height:360px;left:-80px;top:-60px;background:radial-gradient(circle,#c7d2fe,#e0e7ff 60%,transparent 70%);animation-duration:22s}
+    .orb:nth-child(2){width:300px;height:300px;right:-90px;top:32%;background:radial-gradient(circle,#bae6fd,#e0f2fe 60%,transparent 70%);animation-duration:24s;animation-delay:-4s}
+    .orb:nth-child(3){width:260px;height:260px;left:12%;bottom:-90px;background:radial-gradient(circle,#fbcfe8,#ffe4e6 60%,transparent 70%);animation-duration:21s;animation-delay:-8s}
+    .orb:nth-child(4){width:220px;height:220px;right:28%;top:8%;background:radial-gradient(circle,#bbf7d0,#dcfce7 60%,transparent 70%);animation-duration:26s;animation-delay:-6s}
+    @keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(12px,-18px,0) scale(1.05)}}
+    @media (prefers-reduced-motion:reduce){.orb{animation:none}}
+
+    /* Gradient title text */
+    .gradient-text{
+      background:linear-gradient(90deg,var(--brand),#22d3ee,#a78bfa,var(--brand2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      background-size:300% 100%; animation:shift 10s linear infinite;
+    }
+    @keyframes shift{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+    /* Glass card style */
+    .glass{
+      background:rgba(255,255,255,.74);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(99,102,241,.16);
+      border-radius:1.1rem;
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .glass:hover{transform:translateY(-6px); box-shadow:0 14px 30px rgba(0,0,0,.08)}
+
+    /* Navbar link underline micro-interaction */
+    .link-underline{position:relative}
+    .link-underline:after{
+      content:""; position:absolute; left:0; right:100%; bottom:-3px; height:2px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2)); transition:right .3s ease;
+    }
+    .link-underline:hover:after{right:0}
+
+    /* Scroll reveal */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+  </style>
+</head>
+<body class="bg-transparent font-sans antialiased text-gray-800">
+  <!-- Animated background -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb"></span><span class="orb"></span><span class="orb"></span><span class="orb"></span>
+  </div>
+
+  <div class="max-w-5xl mx-auto p-6 md:p-10">
+    <!-- Navbar -->
+    <header class="flex items-center justify-between mb-10">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-indigo-400 rounded-full"></div>
+        <h1 class="text-xl font-semibold">Raj Koyani</h1>
+      </div>
+      <nav class="space-x-6 text-sm md:text-base text-gray-600">
+        <a href="index.html" class="link-underline hover:text-indigo-700">Home</a>
+        <a href="./Experince.html" class="link-underline hover:text-indigo-600 font-semibold text-indigo-700">Experience</a>
+        <a href="projects.html" class="link-underline hover:text-indigo-700">Projects</a>
+        <a href="certificates.html" class="link-underline hover:text-indigo-700">Certification</a>
+        <a href="./resume.pdf" download class="link-underline hover:text-indigo-700">Resume</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raj.koyani23@gmail.com" target="_blank" class="link-underline hover:text-indigo-700">Mail</a>
+      </nav>
+    </header>
+
+    <!-- Heading -->
+    <div class="text-center reveal">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4 gradient-text">Experience</h2>
+      <p class="text-gray-600 mb-8">A snapshot of my leadership, research, and industry work.</p>
+    </div>
+
+    <!-- NSS -->
+    <section class="mb-6 reveal">
+      <div class="glass p-6 md:p-8 flex items-start justify-between">
+        <!-- Left (Text Content) -->
+        <div class="max-w-3xl">
+          <h3 class="text-xl font-semibold text-gray-900">National Service Scheme (NSS) – VIT</h3>
+          <p class="text-gray-500">Head of Influencer Committee • 2021 – 2023</p>
+          <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700">
+            <li>Actively contributed for 2 years, organizing and managing various NSS events.</li>
+            <li>Promoted to <span class="font-medium">Head of Influencer Committee</span>.</li>
+            <li>Managed and expanded the social media presence, particularly on Instagram.</li>
+            <li>Received Instagram appreciation for impactful posts and engagement.</li>
+          </ul>
+        </div>
+        <!-- Right (Logo) -->
+        <div class="ml-6">
+          <img src="./image/nss.jpeg" alt="NSS Logo" class="w-28 h-28 object-contain">
+        </div>
+      </div>
+    </section>
+
+    <!-- Techextensor -->
+    <section class="mb-6 reveal">
+      <div class="glass p-6 md:p-8 flex items-center justify-between">
+        <!-- Left (Text) -->
+        <div class="max-w-3xl">
+          <h3 class="text-xl font-semibold text-gray-900">Techextensor Pvt. Ltd.</h3>
+          <p class="text-gray-500">Web Development Intern • Ahmedabad, Gujarat • 1 Month (2023)</p>
+          <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700">
+            <li>Worked as a trainee web developer, collaborating on real-world projects.</li>
+            <li>Gained hands-on experience with modern web technologies and workflows.</li>
+          </ul>
+        </div>
+        <!-- Right (Logo) -->
+        <div class="ml-6">
+          <img src="./image/tech.jpeg" alt="Techextensor Logo" class="w-28 h-28 object-contain">
+        </div>
+      </div>
+    </section>
+
+    <!-- CCPS -->
+    <section class="mb-6 reveal">
+      <div class="glass p-6 md:p-8 flex items-center justify-between">
+        <!-- Left (Text) -->
+        <div class="max-w-3xl">
+          <h3 class="text-xl font-semibold text-gray-900">VIT Chennai – Centre for Cyber Physical Systems (CCPS)</h3>
+          <p class="text-gray-500">Summer Research Intern • Chennai, Tamil Nadu • Jun – Jul 2024</p>
+          <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700">
+            <li>Designed an <span class="font-medium">IoT Level-5 Smart Lock System</span> over a 6-week internship.</li>
+            <li>Integrated biometric authentication and emergency auto-unlocking features.</li>
+            <li>Connected the system to cloud for remote monitoring, data logging, and real-time entry tracking.</li>
+            <li>Implemented fail-safe mechanisms and enhanced security using IoT best practices.</li>
+          </ul>
+        </div>
+        <!-- Right (Logo) -->
+        <div class="ml-6">
+          <img src="./image/vit.png" alt="VIT Chennai Logo" class="w-28 h-28 object-contain">
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-6 border-t border-gray-200 text-sm text-[color:var(--muted)] flex flex-col sm:flex-row justify-between gap-6">
+      <div class="flex flex-col sm:flex-row gap-8">
+        <div>
+          <span class="font-medium text-indigo-700">Email</span><br/>
+          <a href="mailto:raj.koyani23@gmail.com" class="hover:underline flex items-center gap-2">
+            <i class="fa-solid fa-envelope"></i><span>raj.koyani23@gmail.com</span>
+          </a>
+        </div>
+        <div>
+          <span class="font-medium text-indigo-700">GitHub</span><br/>
+          <a href="https://github.com/Raj-Koyani" target="_blank" class="hover:underline flex items-center gap-2">
+            <i class="fa-brands fa-github"></i><span>Raj-Koyani</span>
+          </a>
+        </div>
+        <div>
+          <span class="font-medium text-indigo-700">LinkedIn</span><br/>
+          <a href="https://www.linkedin.com/in/raj-koyani" target="_blank" class="hover:underline flex items-center gap-2">
+            <i class="fa-brands fa-linkedin"></i><span>in/raj-koyani</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p>&copy; 2024 By Raj Koyani</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Scroll reveal on sections
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('show'); observer.unobserve(entry.target); }
+      });
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>

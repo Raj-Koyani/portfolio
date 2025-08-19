@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raj Koyani - Portfolio</title>
+
+  <!-- Fonts & Tailwind -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#fdfdfd;
+      --ink:#333;
+      --muted:#6b7280;
+      --brand:#6366f1; /* indigo */
+      --brand2:#06b6d4; /* cyan */
+    }
+
+    /* Base */
+    html,body{height:100%}
+    body{
+      font-family:'Inter',sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 600px at 15% -10%, rgba(99,102,241,.10), transparent 60%),
+        radial-gradient(800px 500px at 85% 0%, rgba(6,182,212,.12), transparent 55%),
+        linear-gradient(#fdfdfd,#fafafa);
+      overflow-x:hidden;
+    }
+
+    /* ---------- Animated Background Orbs (light + subtle) ---------- */
+    .bg-orbs{
+      position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;
+    }
+    .bg-orbs .orb{
+      position:absolute; border-radius:9999px; filter:blur(40px);
+      opacity:.45; transform:translate3d(0,0,0); will-change:transform;
+      animation:float 16s ease-in-out infinite;
+      mix-blend-mode:multiply;  /* keeps it soft on light bg */
+    }
+    .bg-orbs .orb:nth-child(1){
+      width:380px; height:380px; left:-80px; top:-60px;
+      background:radial-gradient(circle at 30% 30%, #c7d2fe, #e0e7ff 60%, transparent 70%);
+      animation-duration:18s;
+    }
+    .bg-orbs .orb:nth-child(2){
+      width:320px; height:320px; right:-90px; top:30%;
+      background:radial-gradient(circle at 60% 40%, #bae6fd, #e0f2fe 60%, transparent 70%);
+      animation-duration:22s; animation-delay:-3s;
+    }
+    .bg-orbs .orb:nth-child(3){
+      width:260px; height:260px; left:12%; bottom:-100px;
+      background:radial-gradient(circle at 40% 60%, #fbcfe8, #ffe4e6 60%, transparent 70%);
+      animation-duration:20s; animation-delay:-6s;
+    }
+    .bg-orbs .orb:nth-child(4){
+      width:220px; height:220px; right:25%; top:8%;
+      background:radial-gradient(circle at 50% 50%, #bbf7d0, #dcfce7 60%, transparent 70%);
+      animation-duration:23s; animation-delay:-9s;
+    }
+    .bg-orbs .orb:nth-child(5){
+      width:280px; height:280px; left:55%; bottom:8%;
+      background:radial-gradient(circle at 50% 50%, #fde68a, #fef3c7 60%, transparent 70%);
+      animation-duration:26s; animation-delay:-4s;
+    }
+
+    @keyframes float{
+      0%,100%{ transform:translate3d(0,0,0) scale(1) }
+      50%    { transform:translate3d(12px,-18px,0) scale(1.06) }
+    }
+
+    /* gradient text */
+    .gradient-text{
+      background:linear-gradient(90deg,var(--brand),#22d3ee,#a78bfa,var(--brand2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      background-size:300% 100%;
+      animation:shift 10s linear infinite;
+    }
+    @keyframes shift{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+    /* glass cards */
+    .glass{
+      background:rgba(255,255,255,.7);
+      backdrop-filter:blur(12px);
+      border-radius:1.25rem;
+      border:1px solid rgba(99,102,241,.15);
+      box-shadow:0 8px 18px rgba(0,0,0,.05);
+    }
+
+    /* nav underline */
+    .link-underline{position:relative}
+    .link-underline:after{
+      content:""; position:absolute; left:0; right:100%; bottom:-3px; height:2px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      transition:right .3s ease;
+    }
+    .link-underline:hover:after{right:0}
+
+    /* scroll reveal */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* highlight blob card morph */
+    .blob-card{border-radius:40% 60% 60% 40%/55% 45% 55% 45%;transition:.5s ease}
+    .blob-card:hover{border-radius:60% 40% 45% 55%/40% 60% 45% 55%; transform:translateY(-6px)}
+
+    /* motion accessibility */
+    @media (prefers-reduced-motion:reduce){
+      .bg-orbs .orb{animation:none}
+      .gradient-text{animation:none}
+      .reveal{transition:none}
+    }
+
+    /* Responsive Mobile Menu */
+    .sm\:hidden { display: none; }
+    @media (max-width: 768px) {
+      .sm\:hidden { display: block; }
+      nav {
+        display: none;
+      }
+      .mobile-menu {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-indigo-200 selection:text-indigo-900">
+
+  <!-- Animated pastel orb background -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb"></span>
+    <span class="orb"></span>
+    <span class="orb"></span>
+    <span class="orb"></span>
+    <span class="orb"></span>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-6">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-indigo-400"></div>
+        <h1 class="text-lg font-semibold">Raj Koyani</h1>
+        <span class="hidden sm:block text-sm text-[color:var(--muted)]">M.Tech Software Engineering Student</span>
+      </div>
+      <!-- Mobile Menu Button -->
+      <div class="sm:hidden">
+        <button id="mobile-menu-btn" class="text-gray-700 focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden sm:flex items-center gap-6 text-[color:var(--muted)]">
+        <a href="./index.html" class="link-underline hover:text-indigo-600 font-semibold text-indigo-700">Home</a>
+        <a href="Experince.html" class="link-underline hover:text-indigo-600">Experience</a>
+        <a href="Projects.html" class="link-underline hover:text-indigo-600">Projects</a>
+        <a href="certificates.html" class="link-underline hover:text-indigo-600">Certification</a>
+        <a href="./resume.pdf" download class="link-underline hover:text-indigo-600">Resume</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=raj.koyani23@gmail.com" target="_blank" class="link-underline hover:text-indigo-700">Mail</a>
+      </nav>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <nav id="mobile-menu" class="sm:hidden absolute top-16 left-0 right-0 bg-white shadow-md px-4 py-6 hidden">
+        <a href="./index.html" class="block py-2 px-4 hover:text-indigo-600">Home</a>
+        <a href="Experince.html" class="block py-2 px-4 hover:text-indigo-600">Experience</a>
+        <a href="Projects.html" class="block py-2 px-4 hover:text-indigo-600 text-indigo-700">Projects</a>
+        <a href="certificates.html" class="block py-2 px-4 hover:text-indigo-600">Certification</a>
+        <a href="./resume.pdf" download class="block py-2 px-4 hover:text-indigo-600">Resume</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <main class="mt-10 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-shrink-0">
+        <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-xl ring-4 ring-indigo-100">
+          <img src="./image/profile.jpg" alt="Raj Koyani" class="w-full h-full object-cover"/>
+        </div>
+      </div>
+      <div class="flex-1 text-center md:text-left reveal">
+        <h2 class="text-4xl sm:text-5xl font-extrabold gradient-text mb-3">Raj Koyani</h2>
+        <h3 class="text-lg sm:text-xl text-[color:var(--muted)] mb-4">A Bit About Me</h3>
+        <p class="text-[color:var(--ink)]/80 leading-relaxed max-w-xl mx-auto md:mx-0">
+          I am a dynamic and driven final-year Integrated M.Tech Software Engineering student at VIT Chennai.
+          Beyond my academic pursuits, I leverage my leadership and management skills as a Committee Lead at the
+          National Service Scheme. My journey is defined by a commitment to using software development to create
+          meaningful solutions and drive positive change in the community.
+        </p>
+      </div>
+    </main>
+
+    <!-- Highlights -->
+    <section class="mt-16 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8 reveal">My Highlights</h2>
+      <div class="flex flex-wrap justify-center gap-8 sm:gap-10">
+        <div class="reveal w-64">
+          <div class="blob-card glass w-64 h-64 flex flex-col items-center justify-center p-5">
+            <h3 class="text-lg font-bold text-indigo-600 mb-2">Internship</h3>
+            <p class="text-sm text-[color:var(--muted)]">Summer Research Intern at VIT Chennai - CCPS.</p>
+            <p class="text-sm font-semibold mt-2 text-indigo-800">+2 more internships</p>
+          </div>
+        </div>
+        <div class="reveal w-64">
+          <div class="blob-card glass w-64 h-64 flex flex-col items-center justify-center p-5">
+            <h3 class="text-lg font-bold text-cyan-600 mb-2">Projects</h3>
+            <p class="text-sm text-[color:var(--muted)]">AI/ML, Embedded Systems, IoT, Web development.</p>
+            <p class="text-sm font-semibold mt-2 text-cyan-800">+4 more projects</p>
+          </div>
+        </div>
+        <div class="reveal w-64">
+          <div class="blob-card glass w-64 h-64 flex flex-col items-center justify-center p-5">
+            <h3 class="text-lg font-bold text-pink-600 mb-2">Certifications</h3>
+            <p class="text-sm text-[color:var(--muted)]">AWS, Infosys, Wells Fargo and more.</p>
+            <p class="text-sm font-semibold mt-2 text-pink-800">+4 more certifications</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-6 border-t border-gray-200 text-sm text-[color:var(--muted)] flex flex-col sm:flex-row justify-between gap-6">
+  <div class="flex flex-col sm:flex-row gap-8">
+    <!-- Email -->
+      <div>
+      <span class="font-medium text-indigo-700">Email</span><br/>
+      <a href="mailto:raj.koyani23@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Raj,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+              class="hover:text-indigo-600 flex items-center gap-2">
+        <i class="fa-solid fa-envelope"></i>
+        <span>raj.koyani23@gmail.com</span>
+      </a>
+    </div>
+
+    <!-- GitHub -->
+    <div>
+      <span class="font-medium text-indigo-700">GitHub</span><br/>
+      <a href="https://github.com/Raj-Koyani" target="_blank" class="hover:underline flex items-center gap-2">
+        <i class="fa-brands fa-github"></i><span>Raj-Koyani</span>
+      </a>
+    </div>
+
+    <!-- LinkedIn -->
+    <div>
+      <span class="font-medium text-indigo-700">LinkedIn</span><br/>
+      <a href="https://www.linkedin.com/in/raj-koyani-b1687a232" target="_blank" class="hover:underline flex items-center gap-2">
+        <i class="fa-brands fa-linkedin"></i><span>in/raj-koyani</span>
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <p>&copy; 2024 By Raj Koyani</p>
+  </div>
+</footer>
+
+  </div>
+
+  <script>
+    // scroll reveal
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target);}
+      });
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
